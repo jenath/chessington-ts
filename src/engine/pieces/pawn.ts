@@ -8,7 +8,12 @@ export class Pawn extends Piece {
     super(player)
   }
 
-  getAvailableMoves(_board: Board): Square[] {
-    return [] as Square[]
+  getAvailableMoves(board: Board): Square[] {
+
+    // Move 1 space 
+    const currentSquare = board.findPiece(this)
+    const oneSpace = Square.at(currentSquare.row + (this.player === Player.WHITE ? 1 : -1), currentSquare.col)
+
+    return [ oneSpace ]
   }
 }
